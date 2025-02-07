@@ -1,0 +1,18 @@
+allprojects {
+    repositories {
+        google()               // Google's Maven repository
+        mavenCentral()         // Maven Central repository
+        maven { url 'https://jcenter.bintray.com' }  // JCenter repository (deprecated)
+    }
+}
+
+rootProject.buildDir = "../build"
+
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+    project.evaluationDependsOn(":app")  // Ensure app module is evaluated before others
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
