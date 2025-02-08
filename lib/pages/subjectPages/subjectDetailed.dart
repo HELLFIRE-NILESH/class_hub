@@ -1,11 +1,11 @@
 import 'package:class_hub/pages/subjectPages/notesPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../widgets/container_widgets/card.dart';
-import 'subjectPages/assignmentPage.dart';
-import 'subjectPages/docPage.dart';
-import 'subjectPages/refPage.dart';
-import 'subjectPages/syllabusPage.dart';
+import '../../widgets/container_widgets/card.dart';
+import 'assignmentPage.dart';
+import 'docPage.dart';
+import 'refPage.dart';
+import 'syllabusPage.dart';
 
 class SubDetailed extends StatefulWidget {
   final Map<String, dynamic> subDetail;

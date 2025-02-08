@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:path_provider/path_provider.dart';
-import '../pages/loginPage.dart';
+import '../pages/userPage/loginPage.dart';
 import 'initialData.dart';
 import 'subData.dart';
 import 'userInfo.dart';

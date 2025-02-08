@@ -42,6 +42,8 @@ class _docPageState extends State<docPage> {
 
     for (var site in sites) {
       String title = site['type'];
+      print(site['link']);
+
       if (grouped.containsKey(title)) {
         grouped[title]?.add(site);
       } else {
@@ -81,6 +83,7 @@ class _docPageState extends State<docPage> {
       setState(() {
         isRefreshing =
         false;
+
       });
       print('Error refreshing assignments: $error');
     }

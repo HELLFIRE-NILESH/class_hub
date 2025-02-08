@@ -187,8 +187,6 @@ class _refPageState extends State<refPage> {
                                         fontSize: 18,
                                         wordSpacing: 2,
                                       ),
-                                      maxLines: 2,
-                                      overflow: TextOverflow.ellipsis,
                                     ),
                                   ],
                                 ),
@@ -196,6 +194,7 @@ class _refPageState extends State<refPage> {
                               SizedBox(width: 5),
                               ElevatedButton(
                                 onPressed: () => _launchURL(site['link']),
+
                                 child: Text("Visit"),
                               ),
                             ],

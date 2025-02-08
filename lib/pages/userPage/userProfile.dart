@@ -3,9 +3,9 @@ import 'package:class_hub/pages/creditPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:class_hub/api_data/userInfo.dart';
-import '../widgets/userProfile/backLogCard.dart';
-import '../widgets/userProfile/profileCard.dart';
-import '../widgets/userProfile/resultCard.dart';
+import '../../widgets/userProfile/backLogCard.dart';
+import '../../widgets/userProfile/profileCard.dart';
+import '../../widgets/userProfile/resultCard.dart';
 import 'package:class_hub/theme/themeData.dart';
 
 class UserProfile extends StatefulWidget {

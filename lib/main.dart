@@ -7,7 +7,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'api_data/initialData.dart';
 import 'api_data/subData.dart';
 import 'nav/navbar.dart';
-import 'pages/loginPage.dart';
+import 'pages/userPage/loginPage.dart';
 import 'theme/themeData.dart';
 
 final storage = FlutterSecureStorage();

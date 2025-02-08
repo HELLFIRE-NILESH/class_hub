@@ -1,4 +1,4 @@
-import 'package:class_hub/pages/subjectDetailed.dart';
+import 'package:class_hub/pages/subjectPages/subjectDetailed.dart';
 import 'package:flutter/material.dart';
 
 class SubjectCard extends StatelessWidget {

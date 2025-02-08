@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../api_data/login.dart';
-import '../nav/navbar.dart';
+import '../../api_data/login.dart';
+import '../../nav/navbar.dart';
 import 'package:flutter/services.dart';
 
 class UpperCaseTextFormatter extends TextInputFormatter {

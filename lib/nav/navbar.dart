@@ -1,5 +1,6 @@
 import 'package:class_hub/pages/homePage.dart';
-import 'package:class_hub/pages/userProfile.dart';
+import 'package:class_hub/pages/samplePaper/paperPage.dart';
+import 'package:class_hub/pages/userPage/userProfile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_snake_navigationbar/flutter_snake_navigationbar.dart';
@@ -45,6 +46,7 @@ class _NavViewState extends State<NavView> {
         },
         items: const [
           BottomNavigationBarItem(icon: Icon(CupertinoIcons.home)),
+          BottomNavigationBarItem(icon: Icon(CupertinoIcons.doc_richtext)),
           BottomNavigationBarItem(icon: Icon(CupertinoIcons.person)),
         ],
       ),
@@ -57,6 +59,7 @@ class _NavViewState extends State<NavView> {
         },
         children: const [
           HomePage(),
+          PreviousPaper(),
           UserProfile(),
         ],
       ),

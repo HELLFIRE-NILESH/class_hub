@@ -36,7 +36,7 @@ Future<List<Map<String, dynamic>>> fetchDataFromApi(String rollNo) async {
       return [];
     }
 
-    final url = Uri.http(baseUrl, '$path$rollNo');
+    final url = Uri.http(baseUrl, '/api/auth/$rollNo');
     print('Fetching data from URL: $url');
 
     final token = await storage.read(key: 'jwt_token');
@@ -56,8 +56,8 @@ Future<List<Map<String, dynamic>>> fetchDataFromApi(String rollNo) async {
 
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
-      if (data is List) {
-        return List<Map<String, dynamic>>.from(data);
+      if (data is Map<String, dynamic>) {
+        return [data];
       } else {
         print('Unexpected data format: $data');
         return [];

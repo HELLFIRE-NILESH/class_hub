@@ -84,7 +84,6 @@ class _AssignmentPageState extends State<AssignmentPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Assignments - ${widget.subjectId}'),
-        centerTitle: true,
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
