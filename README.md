@@ -1,6 +1,6 @@
 # class_hub
 
-A class management solution for my college.
+A class complete study solution for my college.
 
 ## Getting Started
 
