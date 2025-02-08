@@ -83,7 +83,7 @@ class _syllabusPageState extends State<syllabusPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Syllabus"),
+        title: Text("Syllabus - ${widget.subjectId}"),
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);

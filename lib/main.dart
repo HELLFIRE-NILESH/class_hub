@@ -50,8 +50,7 @@ class _MyAppState extends State<MyApp> {
       final userdata = await loadUserDataFile();
       if (userdata.isNotEmpty) {
         var code = [...(userdata[0]['sub']), ...(userdata[0]['back_log'])];
-        await fetchsubjectDetail(code);
-        await fetchAndSaveSubData(code);
+        await fetchAndSaveSubData(code).timeout(Duration(seconds: 3));
       } else {
         print("No data found");
       }

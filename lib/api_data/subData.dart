@@ -24,13 +24,22 @@ Future<DateTime?> getLastSubFetchTime() async {
 
 // Check if the last subject fetch was more than 1 hour ago
 Future<bool> shouldFetchData() async {
-  DateTime? lastSubFetchTime = await getLastSubFetchTime();
-  if (lastSubFetchTime == null) {
-    return true; // First time fetch, always fetch
+  DateTime? lastRequestTime = await getLastSubFetchTime();
+  if (lastRequestTime == null) {
+    return true;
   }
-  Duration difference = DateTime.now().difference(lastSubFetchTime);
-  return difference.inHours >= 1; // Fetch if 1 hour has passed
+
+  // Check if the last request was made on a different day
+  DateTime now = DateTime.now();
+  if (lastRequestTime.year != now.year ||
+      lastRequestTime.month != now.month ||
+      lastRequestTime.day != now.day) {
+    return true;
+  }
+
+  return false;
 }
+
 
 Future<List<Map<String, dynamic>>> fetchsubjectDetail(List<dynamic> subjectCodes) async {
   String cacheKey = subjectCodes.join(",");
@@ -56,7 +65,7 @@ Future<List<Map<String, dynamic>>> fetchSubFromApi(String cacheKey) async {
   try {
     await dotenv.load(fileName: ".env");
     String? baseUrl = dotenv.env['URL'];
-    final url = Uri.http(baseUrl!, "/sub/$cacheKey");
+    final url = Uri.http(baseUrl!, "/api/subjects/sub/$cacheKey");
     print('Fetching data from URL: $url');
 
     String? Token = await storage.read(key: 'jwt_token');
@@ -67,7 +76,7 @@ Future<List<Map<String, dynamic>>> fetchSubFromApi(String cacheKey) async {
       'Bypass-Tunnel-Reminder': "1",
     };
 
-    final res = await http.get(url, headers: headers).timeout(Duration(seconds: 2));
+    final res = await http.get(url, headers: headers);
 
     try {
       List<dynamic> decodedData = json.decode(res.body);

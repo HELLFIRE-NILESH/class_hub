@@ -1,5 +1,4 @@
 import 'package:class_hub/pages/homePage.dart';
-import 'package:class_hub/pages/noticeBoard.dart';
 import 'package:class_hub/pages/userProfile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -46,7 +45,6 @@ class _NavViewState extends State<NavView> {
         },
         items: const [
           BottomNavigationBarItem(icon: Icon(CupertinoIcons.home)),
-          BottomNavigationBarItem(icon: Icon(CupertinoIcons.chat_bubble_text)),
           BottomNavigationBarItem(icon: Icon(CupertinoIcons.person)),
         ],
       ),
@@ -59,7 +57,6 @@ class _NavViewState extends State<NavView> {
         },
         children: const [
           HomePage(),
-          NoticeBoard(),
           UserProfile(),
         ],
       ),

@@ -44,7 +44,7 @@ class _SubDetailedState extends State<SubDetailed> {
               buildCard(context, 'Sites', CupertinoIcons.bookmark, refPage(subjectId: widget.subDetail["sub_code"])),
               buildCard(context, 'Assignment', Icons.assignment_outlined, AssignmentPage(subjectId: widget.subDetail["sub_code"])) ,
               buildCard(context, 'Notes', CupertinoIcons.doc_plaintext, NotesPage(subjectId: widget.subDetail['sub_code'])),
-              buildCard(context, 'Downloads', CupertinoIcons.arrow_down_circle, docPage(subjectId: widget.subDetail['sub_code'])),
+              buildCard(context, 'Documents', CupertinoIcons.doc_append, docPage(subjectId: widget.subDetail['sub_code'])),
               buildCard(context, 'Imp', CupertinoIcons.info, Imp()),
             ].map((card) => SizedBox(height: 120, width: 120, child: card)).toList(),
           ),

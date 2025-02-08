@@ -11,7 +11,7 @@ import 'userInfo.dart';
 
 
 class ApiService {
-  static const String baseUrl = "http://classhub.loca.lt";
+  static const String baseUrl = "http://192.168.200.45:8000";
   static final FlutterSecureStorage storage = const FlutterSecureStorage();
 
 
@@ -20,7 +20,7 @@ class ApiService {
   }
   static Future<Map<String, dynamic>> login(String rollNo, String password) async {
     String? rollno;
-    final url = Uri.parse('$baseUrl/login');
+    final url = Uri.parse('$baseUrl/api/auth/login');
     final response = await http.post(
       url,
       headers: {"Content-Type": "application/json"},

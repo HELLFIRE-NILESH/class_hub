@@ -91,7 +91,7 @@ class _docPageState extends State<docPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Reference Sites"),
+        title: Text("Documents - ${widget.subjectId}"),
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -197,7 +197,7 @@ class _docPageState extends State<docPage> {
                               SizedBox(width: 10),
                               ElevatedButton(
                                 onPressed: () => _launchURL(site['link']),
-                                child: Icon(CupertinoIcons.arrow_down_circle,color: Colors.white,),
+                                child: Text("View"),
                               ),
                             ],
                           ),

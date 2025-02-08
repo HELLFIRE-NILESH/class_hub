@@ -114,7 +114,7 @@ class _NotesPageState extends State<NotesPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Notes"),
+        title: Text("Notes - ${widget.subjectId}"),
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);

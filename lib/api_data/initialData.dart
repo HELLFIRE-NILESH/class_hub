@@ -21,14 +21,19 @@ Future<DateTime?> getLastRequestTime() async {
   return null;
 }
 
-// Check if the last request was made within the last 4 minutes
 Future<bool> shouldFetchNewData() async {
   DateTime? lastRequestTime = await getLastRequestTime();
   if (lastRequestTime == null) {
     return true;
   }
-  Duration difference = DateTime.now().difference(lastRequestTime);
-  return difference.inMinutes >= 3;
+  DateTime now = DateTime.now();
+  if (lastRequestTime.year != now.year ||
+      lastRequestTime.month != now.month ||
+      lastRequestTime.day != now.day) {
+    return true;
+  }
+
+  return false;
 }
 
 Future<void> fetchAndSaveSubData(List<dynamic> subjectCodes) async {
@@ -44,9 +49,9 @@ Future<void> fetchAndSaveSubData(List<dynamic> subjectCodes) async {
     'Bypass-Tunnel-Reminder': "1",
   };
 
-  if (await shouldFetchNewData()) {
+   if (await shouldFetchNewData()) {
     List<String> subjectCodesStr = subjectCodes.map((e) => e.toString()).toList();
-    final Uri url = Uri.http(baseUrl!, '${subjectCodesStr.join(",")}$path');
+    final Uri url = Uri.http(baseUrl!, '/api/subjects/${subjectCodesStr.join(",")}$path');
 
     try {
       final response = await http.get(url, headers: headers);
@@ -71,7 +76,7 @@ Future<void> fetchAndSaveSubData(List<dynamic> subjectCodes) async {
       print("❌ Error fetching data: $e");
     }
   } else {
-    print("⏳ Skipping fetch. Last request was less than 4 minutes ago.");
+    print("⏳ Skipping fetch. Last request was less than 1 day ago.");
   }
 }
 

@@ -110,7 +110,7 @@ Future<Map<String, dynamic>> fetchSubjectData(String subjectCode, String dataTyp
   await dotenv.load(fileName: ".env");
 
   String? baseUrl = dotenv.env['URL'];
-  final Uri url = Uri.http(baseUrl!, "$subjectCode/$dataType");
+  final Uri url = Uri.http(baseUrl!, "/api/subjects/$subjectCode/$dataType");
   String? Token = await storage.read(key: 'jwt_token');
 
   // Define headers
@@ -121,6 +121,7 @@ Future<Map<String, dynamic>> fetchSubjectData(String subjectCode, String dataTyp
   };
 
   try {
+    print(url);
     final response = await http.get(url, headers: headers);
     if (response.statusCode == 200) {
       final Map<String, dynamic> responseData = json.decode(response.body);
