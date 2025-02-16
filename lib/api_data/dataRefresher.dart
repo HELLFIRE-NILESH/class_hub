@@ -163,21 +163,17 @@ Future<void> refreshData(BuildContext context, String subjectCode, String dataTy
           throw Exception('Invalid data type');
       }
 
-      // After a successful refresh, store the current time as the last refresh time for this subject/data type
       await storeRefreshTime(subjectCode, dataType);
 
-      // Show success snackbar
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('Data refreshed successfully!')),
       );
     } else {
-      // Show message if not enough time has passed
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Wait for 1 minute before refreshing again.'),duration: Duration(seconds: 1),),
+        SnackBar(content: Text('Wait for 1 minute before refreshing again.'),duration: Duration(milliseconds: 500),),
       );
     }
   } catch (e) {
-    // Show error snackbar
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Loaded offline data '),duration: Duration(seconds: 1),),
     );

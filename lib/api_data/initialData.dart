@@ -49,7 +49,7 @@ Future<void> fetchAndSaveSubData(List<dynamic> subjectCodes) async {
     'Bypass-Tunnel-Reminder': "1",
   };
 
-   if (await shouldFetchNewData()) {
+   // if (await shouldFetchNewData()) {
     List<String> subjectCodesStr = subjectCodes.map((e) => e.toString()).toList();
     final Uri url = Uri.http(baseUrl!, '/api/subjects/${subjectCodesStr.join(",")}$path');
 
@@ -75,9 +75,9 @@ Future<void> fetchAndSaveSubData(List<dynamic> subjectCodes) async {
     } catch (e) {
       print("❌ Error fetching data: $e");
     }
-  } else {
-    print("⏳ Skipping fetch. Last request was less than 1 day ago.");
-  }
+  // } else {
+  //   print("⏳ Skipping fetch. Last request was less than 1 day ago.");
+  // }
 }
 
 Future<void> saveSubjectData(String subjectCode, Map<String, dynamic> data) async {

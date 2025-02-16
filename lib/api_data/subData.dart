@@ -45,16 +45,16 @@ Future<List<Map<String, dynamic>>> fetchsubjectDetail(List<dynamic> subjectCodes
   String cacheKey = subjectCodes.join(",");
 
   // Check if we should fetch data based on the last subject fetch time
-  if (await shouldFetchData()) {
+  // if (await shouldFetchData()) {
     List<Map<String, dynamic>> data = await fetchSubFromApi(cacheKey);
     if (data.isNotEmpty) {
       print('Data fetched from API for subjects: $cacheKey');
       await storeLastSubFetchTime();
       return data;
     }
-  } else {
-    print('⏳ Skipping fetch. Last subject fetch was less than 1 hour ago.');
-  }
+  // } else {
+  //   print('⏳ Skipping fetch. Last subject fetch was less than 1 hour ago.');
+  // }
 
   // If API fetch fails or was skipped, load the data from cache (file)
   print('Loading cached data from file for subjects: $cacheKey');
