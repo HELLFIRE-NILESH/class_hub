@@ -31,6 +31,7 @@ class ApiService {
       final data = jsonDecode(response.body);
       await storage.write(key: "roll_no", value: rollNo);
       await storage.write(key: "jwt_token", value: data["token"]);
+      print(data["token"]);
 
       rollno = await storage.read(key: 'roll_no');
       final userdata = await fetchUserData(rollno!);

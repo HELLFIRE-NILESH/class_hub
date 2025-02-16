@@ -21,7 +21,7 @@ void main() async {
   ));
 
   WidgetsFlutterBinding.ensureInitialized();
-  await dotenv.load(fileName: '.env'); // Load environment variables
+  await dotenv.load(fileName: '.env');
 
   runApp(const MyApp());
 }
@@ -44,19 +44,26 @@ class _MyAppState extends State<MyApp> {
 
   Future<bool> _checkJwtToken() async {
     String? jwtTok = await storage.read(key: 'jwt_token');
-    if (jwtTok != null){
+
+    if (jwtTok != null) {
       rollno = await storage.read(key: 'roll_no');
       final userdata = await loadUserDataFile();
       if (userdata.isNotEmpty) {
         var code = [...(userdata[0]['sub']), ...(userdata[0]['back_log'])];
-        await fetchAndSaveSubData(code).timeout(Duration(seconds: 3));
+        try {
+          await fetchAndSaveSubData(code).timeout(Duration(seconds: 3));
+          print("Subject Data Fetched Successfully");
+        } catch (e) {
+          print("Error fetching subject data: $e");
+        }
       } else {
-        print("No data found");
+        print("No user data found");
       }
+      return true;
     }
-    return jwtTok != null;
+    print("JWT Token is null, returning false.");
+    return false;
   }
-
 
 
   @override
