@@ -5,7 +5,6 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'api_data/initialData.dart';
-import 'api_data/subData.dart';
 import 'nav/navbar.dart';
 import 'pages/userPage/loginPage.dart';
 import 'theme/themeData.dart';
