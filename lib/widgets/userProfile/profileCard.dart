@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ProfileSection extends StatelessWidget {
   final bool isExpanded;
@@ -22,6 +24,7 @@ class ProfileSection extends StatelessWidget {
     required this.semester,
   });
 
+
   String getSemesterSuffix(int semester) {
     if (semester % 10 == 1 && semester != 11) {
       return 'st';
@@ -32,6 +35,13 @@ class ProfileSection extends StatelessWidget {
     } else {
       return 'th';
     }
+  }
+
+  void copy(BuildContext context, String roll) {
+    Clipboard.setData(ClipboardData(text: roll));
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Roll Number copied!"),duration: Duration(seconds: 1),),
+    );
   }
 
   @override
@@ -64,7 +74,7 @@ class ProfileSection extends StatelessWidget {
                     borderRadius: BorderRadius.circular(isExpanded ? 20 : 60),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.black.withOpacity(0.2),
+                        color: Colors.black.withValues(alpha: 0.2),
                         blurRadius: 8,
                         offset: Offset(0, 4),
                       ),
@@ -94,12 +104,26 @@ class ProfileSection extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8),
-              Text(
-                rollNumber,
-                style: const TextStyle(
-                  fontSize: 18,
-                  color: Colors.grey,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+
+                  GestureDetector(
+                    onTap: () {
+                      copy(context, rollNumber);
+                    },
+                    child: Text(
+                      rollNumber,
+                      style: const TextStyle(
+                        fontSize: 18,
+                        color: Colors.grey,
+                      ),
+                    ),
+                  ),
+                  // IconButton(onPressed: () {
+                  //   copy(context,rollNumber);
+                  // }, icon: Icon(CupertinoIcons.doc_on_clipboard))
+                ],
               ),
             ],
           ),
