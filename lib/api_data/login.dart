@@ -11,7 +11,8 @@ import 'userInfo.dart';
 
 
 class ApiService {
-  static const String baseUrl = "http://192.168.96.45:8000";
+
+  static const String baseUrl = "http://192.168.177.45:8000";
   static final FlutterSecureStorage storage = const FlutterSecureStorage();
 
 

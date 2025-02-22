@@ -51,7 +51,6 @@ class _UserProfileState extends State<UserProfile> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: const Text("Profile"),
@@ -59,7 +58,11 @@ class _UserProfileState extends State<UserProfile> {
         leading: IconButton(
           icon: const Icon(Icons.info_outline),
           onPressed: () {
-            Navigator.push(context, MaterialPageRoute(builder: (context) => appCredit(),));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => appCredit(),
+                ));
           },
         ),
         actions: [
@@ -68,7 +71,7 @@ class _UserProfileState extends State<UserProfile> {
             child: IconButton(
               icon: const Icon(Icons.logout_outlined),
               onPressed: () {
-               ApiService.logout(context);
+                ApiService.logout(context);
               },
             ),
           ),
@@ -97,9 +100,7 @@ class _UserProfileState extends State<UserProfile> {
               ),
 
               const SizedBox(height: 24),
-
-              // SGPA Section
-              SGPACGPASection(sgpa: sgpa),
+              SGPACGPASection(sgpa: sgpa,link: sgpa,),
 
               const SizedBox(height: 24),
 

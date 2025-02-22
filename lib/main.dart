@@ -17,8 +17,7 @@ void main() async {
       statusBarColor: Color(0xFFe5e8ea),
       statusBarIconBrightness: Brightness.dark,
       systemNavigationBarColor: const Color(0xFF1E4D4D),
-      systemNavigationBarIconBrightness: Brightness.dark
-  ));
+      systemNavigationBarIconBrightness: Brightness.dark));
 
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: '.env');
@@ -64,7 +63,6 @@ class _MyAppState extends State<MyApp> {
     print("JWT Token is null, returning false.");
     return false;
   }
-
 
   @override
   Widget build(BuildContext context) {
