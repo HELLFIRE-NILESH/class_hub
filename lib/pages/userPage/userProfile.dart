@@ -23,8 +23,10 @@ class _UserProfileState extends State<UserProfile> {
   String mobile = "Loading...";
   int sem = 0;
 
+
   List<dynamic> sgpa = [];
   List<dynamic> back_log = [];
+  List<dynamic> link = [];
 
   Future<void> _loadUserData() async {
     try {
@@ -37,6 +39,7 @@ class _UserProfileState extends State<UserProfile> {
         sgpa = data[0]['sgpa'];
         back_log = data[0]['back_log'];
         sem = data[0]['sem'];
+        link = data[0]['marksheet'];
       });
     } catch (e) {
       print('Error fetching user data: $e');
@@ -100,7 +103,7 @@ class _UserProfileState extends State<UserProfile> {
               ),
 
               const SizedBox(height: 24),
-              SGPACGPASection(sgpa: sgpa,link: sgpa,),
+              SGPACGPASection(sgpa: sgpa,link: link,),
 
               const SizedBox(height: 24),
 
