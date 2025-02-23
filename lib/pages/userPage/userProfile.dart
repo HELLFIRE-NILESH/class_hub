@@ -9,6 +9,7 @@ import '../../widgets/userProfile/profileCard.dart';
 import '../../widgets/userProfile/resultCard.dart';
 import 'package:class_hub/theme/themeData.dart';
 
+
 class UserProfile extends StatefulWidget {
   const UserProfile({super.key});
 
@@ -19,6 +20,7 @@ class UserProfile extends StatefulWidget {
 class _UserProfileState extends State<UserProfile> {
   bool isExpanded = false;
   String name = "Loading...";
+  String dp = "";
   String rollNumber = "Loading...";
   String branch = "Loading...";
   String mobile = "Loading...";
@@ -33,6 +35,7 @@ class _UserProfileState extends State<UserProfile> {
       final data = await loadUserDataFile();
       setState(() {
         name = data[0]["name"];
+        dp = data[0]["dp"];
         rollNumber = data[0]["roll_no"];
         branch = data[0]['branch'];
         mobile = data[0]['mobile_no'];
@@ -94,6 +97,7 @@ class _UserProfileState extends State<UserProfile> {
             children: [
               // Profile Section
               ProfileSection(
+                dp: dp,
                 semester: sem,
                 isExpanded: isExpanded,
                 onImageTap: () {

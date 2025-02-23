@@ -1,11 +1,13 @@
-import 'package:flutter/cupertino.dart';
+import 'package:class_hub/theme/themeData.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ProfileSection extends StatelessWidget {
   final bool isExpanded;
   final VoidCallback onImageTap;
   final String name;
+  final String? dp;
   final String mobile;
   final String branch;
   final String rollNumber;
@@ -22,8 +24,8 @@ class ProfileSection extends StatelessWidget {
     required this.branch,
     required this.rollNumber,
     required this.semester,
+    this.dp,
   });
-
 
   String getSemesterSuffix(int semester) {
     if (semester % 10 == 1 && semester != 11) {
@@ -40,7 +42,10 @@ class ProfileSection extends StatelessWidget {
   void copy(BuildContext context, String roll) {
     Clipboard.setData(ClipboardData(text: roll));
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Roll Number copied!"),duration: Duration(seconds: 1),),
+      const SnackBar(
+        content: Text("Roll Number copied!"),
+        duration: Duration(seconds: 1),
+      ),
     );
   }
 
@@ -52,7 +57,6 @@ class ProfileSection extends StatelessWidget {
       width: cardWidth,
       child: Card(
         elevation: 8,
-        shadowColor: Colors.black.withValues(alpha: 0.3),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
@@ -70,23 +74,30 @@ class ProfileSection extends StatelessWidget {
                   height: isExpanded ? 250 : 120,
                   decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
-                    image: DecorationImage(image: AssetImage("assets/images/profilepic.png")),
                     borderRadius: BorderRadius.circular(isExpanded ? 20 : 60),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withValues(alpha: 0.2),
-                        blurRadius: 8,
-                        offset: Offset(0, 4),
-                      ),
-                    ],
+                    border: Border.all(color: MyTheme.primaryColor),
                   ),
+                  child: dp != null && dp!.isNotEmpty
+                      ? ClipRRect(
+                          borderRadius:
+                              BorderRadius.circular(isExpanded ? 20 : 60),
+                          child: CachedNetworkImage(
+                            imageUrl: dp!,
+                            fit: BoxFit.cover,
+                            placeholder: (context, url) => const Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                            errorWidget: (context, url, error) => Placeholder()
+                          ),
+                        )
+                      : Placeholder()
                 ),
               ),
               const SizedBox(height: 16),
               Text(
                 name,
-                style:Theme.of(context).textTheme.titleLarge
-        ),
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
               const SizedBox(height: 8),
               Text(
                 mobile,
@@ -104,26 +115,15 @@ class ProfileSection extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 8),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-
-                  GestureDetector(
-                    onTap: () {
-                      copy(context, rollNumber);
-                    },
-                    child: Text(
-                      rollNumber,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        color: Colors.grey,
-                      ),
-                    ),
+              GestureDetector(
+                onTap: () => copy(context, rollNumber),
+                child: Text(
+                  rollNumber,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.grey,
                   ),
-                  // IconButton(onPressed: () {
-                  //   copy(context,rollNumber);
-                  // }, icon: Icon(CupertinoIcons.doc_on_clipboard))
-                ],
+                ),
               ),
             ],
           ),

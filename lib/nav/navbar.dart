@@ -53,10 +53,8 @@ class _NavViewState extends State<NavView> {
           onTap: (index) {
             setState(() {
               _currentIndex = index;
-              _pageController.animateToPage(
+              _pageController.jumpToPage(
                 index,
-                duration: Duration(milliseconds: 250),
-                curve: Curves.easeInOut,
               );
             });
           },
