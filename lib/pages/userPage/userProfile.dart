@@ -3,6 +3,7 @@ import 'package:class_hub/pages/creditPage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:class_hub/api_data/userInfo.dart';
+import '../../widgets/Exitdialog.dart';
 import '../../widgets/userProfile/backLogCard.dart';
 import '../../widgets/userProfile/profileCard.dart';
 import '../../widgets/userProfile/resultCard.dart';
@@ -22,7 +23,6 @@ class _UserProfileState extends State<UserProfile> {
   String branch = "Loading...";
   String mobile = "Loading...";
   int sem = 0;
-
 
   List<dynamic> sgpa = [];
   List<dynamic> back_log = [];
@@ -74,7 +74,12 @@ class _UserProfileState extends State<UserProfile> {
             child: IconButton(
               icon: const Icon(Icons.logout_outlined),
               onPressed: () {
-                ApiService.logout(context);
+                ExitDialog(
+                  isLogout: true,
+                  onLogout: () {
+                    ApiService.logout(context);
+                  },
+                ).showExitDialog(context);
               },
             ),
           ),
@@ -103,7 +108,10 @@ class _UserProfileState extends State<UserProfile> {
               ),
 
               const SizedBox(height: 24),
-              SGPACGPASection(sgpa: sgpa,link: link,),
+              SGPACGPASection(
+                sgpa: sgpa,
+                link: link,
+              ),
 
               const SizedBox(height: 24),
 
@@ -111,7 +119,6 @@ class _UserProfileState extends State<UserProfile> {
               BacklogCard(backLogs: back_log),
 
               const SizedBox(height: 24),
-
             ],
           ),
         ),

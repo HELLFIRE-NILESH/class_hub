@@ -8,20 +8,22 @@ import '../pages/userPage/loginPage.dart';
 import 'initialData.dart';
 import 'subData.dart';
 import 'userInfo.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 
 class ApiService {
 
-  static const String baseUrl = "http://192.168.177.45:8000";
+
+  static final baseUrl = dotenv.env['URL'];
+
   static final FlutterSecureStorage storage = const FlutterSecureStorage();
 
 
-  Future<void> initialStart() async {
 
-  }
   static Future<Map<String, dynamic>> login(String rollNo, String password) async {
     String? rollno;
-    final url = Uri.parse('$baseUrl/api/auth/login');
+    print(baseUrl);
+    final url = Uri.http('$baseUrl','/api/auth/login');
     final response = await http.post(
       url,
       headers: {"Content-Type": "application/json"},
