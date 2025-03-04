@@ -204,6 +204,10 @@ http://localhost:8000/api/auth/register
     <td><img src="mockups/11.png" style="width:100%;"></td>
     <td><img src="mockups/12.png" style="width:100%;"></td>
   </tr>
+    <tr>
+    <td><img src="mockups/13.png" style="width:100%;"></td>
+    <td><img src="mockups/0.png" style="width:100%;"></td>
+  </tr>
 </table>
 
 
