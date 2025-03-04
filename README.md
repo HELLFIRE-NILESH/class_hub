@@ -180,30 +180,32 @@ http://localhost:8000/api/auth/register
   <li>🆙 Regularly update user data through the API to keep records fresh.</li>
 </ul>
 
-## 📱 Mobile Mockups
 
-<table>
+<h2>📱 Mobile Mockups</h2>
+
+<table width="100%">
   <tr>
-    <td><img src="mockups/1.png" width="150"></td>
-    <td><img src="mockups/2.png" width="150"></td>
-    <td><img src="mockups/3.png" width="150"></td>
+    <td><img src="mockups/1.png" style="width:100%;"></td>
+    <td><img src="mockups/2.png" style="width:100%;"></td>
+    <td><img src="mockups/3.png" style="width:100%;"></td>
   </tr>
   <tr>
-    <td><img src="mockups/4.png" width="150"></td>
-    <td><img src="mockups/5.png" width="150"></td>
-    <td><img src="mockups/6.png" width="150"></td>
+    <td><img src="mockups/4.png" style="width:100%;"></td>
+    <td><img src="mockups/5.png" style="width:100%;"></td>
+    <td><img src="mockups/6.png" style="width:100%;"></td>
   </tr>
   <tr>
-    <td><img src="mockups/7.png" width="150"></td>
-    <td><img src="mockups/8.png" width="150"></td>
-    <td><img src="mockups/9.png" width="150"></td>
+    <td><img src="mockups/7.png" style="width:100%;"></td>
+    <td><img src="mockups/8.png" style="width:100%;"></td>
+    <td><img src="mockups/9.png" style="width:100%;"></td>
   </tr>
   <tr>
-    <td><img src="mockups/10.png" width="150"></td>
-    <td><img src="mockups/11.png" width="150"></td>
-    <td><img src="mockups/12.png" width="150"></td>
+    <td><img src="mockups/10.png" style="width:100%;"></td>
+    <td><img src="mockups/11.png" style="width:100%;"></td>
+    <td><img src="mockups/12.png" style="width:100%;"></td>
   </tr>
 </table>
+
 
 
 <footer>
