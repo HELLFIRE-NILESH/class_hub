@@ -12,8 +12,8 @@
   
   <ul>
     <li>📚 Study Materials (Notes, PDFs, and Books)</li>
-    <li>📄 Previous Year Papers (Solved & Unsolved)</li>
-    <li>📝 Assignment Submissions</li>
+    <li>📄 Previous Year Papers </li>
+    <li>📝 Assignments</li>
     <li>📊 Personal Academic Records (Marksheets, SGPA, and Backlogs)</li>
     <li>🎯 Daily Study Goals and Progress Tracking (Coming Soon!)</li>
   </ul>
