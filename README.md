@@ -22,7 +22,7 @@
 
   <h2>🛠️ Tech Stack Overview</h2>
   <ul>
-    <li>💻 <strong>Frontend:</strong> Flutter (Android & Web)</li>
+    <li>💻 <strong>Frontend:</strong> Flutter </li>
     <li>🛠️ <strong>Backend:</strong> Node.js + Express</li>
     <li>🗄️ <strong>Database:</strong> MongoDB</li>
     <li>🤖 <strong>AI Integration:</strong> Google Gemini API</li>
