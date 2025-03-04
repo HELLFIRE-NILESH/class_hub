@@ -14,7 +14,7 @@
       max-width: 900px;
       margin: auto;
     }
-    h1, h2, h3, h4 {
+    h1, h2, h3 {
       color: #222;
     }
     h1 {
@@ -27,9 +27,13 @@
       padding: 15px;
       border-radius: 8px;
       overflow-x: auto;
+      white-space: pre-wrap;
     }
     code {
       font-family: Consolas, monospace;
+      background-color: #eee;
+      padding: 2px 5px;
+      border-radius: 4px;
     }
     ul {
       margin-left: 20px;
@@ -48,103 +52,90 @@
 </head>
 <body>
 
-<h1>🎓 ClassHub - Setup Guide</h1>
+  <h1>🎓 ClassHub - Setup Guide</h1>
 
-<p>
-  <strong>ClassHub</strong> is a powerful college study app with integrated AI support designed to help students manage:
-</p>
-<ul>
-  <li>📚 Study materials</li>
-  <li>📄 Previous year papers</li>
-  <li>📝 Assignments</li>
-  <li>📊 Personal academic records</li>
-</ul>
-
-<div class="section">
-  <h2>🛠️ Tech Stack</h2>
+  <p>ClassHub is a powerful college study app with integrated AI support designed to help students manage:</p>
   <ul>
-    <li>🚀 <strong>Frontend:</strong> Flutter (Android & Web)</li>
-    <li>🛠️ <strong>Backend:</strong> Node.js + Express</li>
-    <li>🗃️ <strong>Database:</strong> MongoDB</li>
+    <li>📚 Study materials</li>
+    <li>📄 Previous year papers</li>
+    <li>📝 Assignments</li>
+    <li>📊 Personal academic records</li>
   </ul>
-</div>
 
-<div class="section">
-  <h2>📂 Project Structure</h2>
-  <ul>
-    <li><code>/Backend-api</code> → Node.js REST API (Express + MongoDB)</li>
-    <li><code>/database</code> → MongoDB database backup</li>
-    <li><code>/.env</code> → Configuration file (your local IP)</li>
-  </ul>
-</div>
+  <div class="section">
+    <h2>🛠️ Tech Stack</h2>
+    <ul>
+      <li>🚀 <strong>Frontend:</strong> Flutter (Android & Web)</li>
+      <li>🛠️ <strong>Backend:</strong> Node.js + Express</li>
+      <li>🗃️ <strong>Database:</strong> MongoDB</li>
+    </ul>
+  </div>
 
-<div class="section">
-  <h2>🚀 Installation & Setup</h2>
+  <div class="section">
+    <h2>📂 Project Structure</h2>
+    <pre>/Backend-api     → Node.js REST API (Express + MongoDB)
+/database        → MongoDB database backup
+/.env            → Configuration file (your local IP)</pre>
+  </div>
 
-  <h3>1️⃣ Clone the Repository</h3>
-  <pre><code>git clone https://github.com/HELLFIRE-NILESH/class_hub.git
-cd class_hub
-</code></pre>
+  <div class="section">
+    <h2>🚀 Installation & Setup</h2>
 
-  <h3>2️⃣ Restore the MongoDB Database</h3>
-  <p>Ensure MongoDB is installed and running.</p>
-  <pre><code>mongorestore --db class_hub ./database
-</code></pre>
+    <h3>1️⃣ Clone the Repository</h3>
+    <pre>git clone https://github.com/HELLFIRE-NILESH/class_hub.git
+cd class_hub</pre>
 
-  <h3>3️⃣ Setup the Backend API</h3>
-  <pre><code>cd backend-api
+    <h3>2️⃣ Restore the MongoDB Database</h3>
+    <p>Make sure MongoDB is installed and running.</p>
+    <pre>mongorestore --db class_hub ./database</pre>
+
+    <h3>3️⃣ Setup the Backend API</h3>
+    <pre>cd backend-api
 npm install
-npx nodemon index
-</code></pre>
-  <p>API Running at: <a href="#">http://localhost:8000</a></p>
+npx nodemon index</pre>
+    <p>API Running at: <a href="http://localhost:8000" target="_blank">http://localhost:8000</a></p>
 
-  <h3>4️⃣ Setup the Flutter App</h3>
-  <p>The Flutter app is located in the root directory.</p>
-  <pre><code>flutter pub get
-</code></pre>
+    <h3>4️⃣ Setup the Flutter App</h3>
+    <pre>flutter pub get</pre>
 
-  <h3>5️⃣ Configure <code>.env</code> with Your IPv4 Address</h3>
-  <p>Edit the <code>.env</code> file in the root directory:</p>
-  <pre><code>API_URL=http://&lt;your-local-ipv4&gt;:8000
-</code></pre>
+    <h3>5️⃣ Configure <code>.env</code> with Your IPv4 Address</h3>
+    <p>Edit the <code>.env</code> file:</p>
+    <pre>API_URL=http://&lt;your-local-ipv4&gt;:8000</pre>
 
-  <h4>🔍 Find Your IPv4 Address:</h4>
-  <ul>
-    <li><strong>Windows:</strong></li>
-    <pre><code>ipconfig
-</code></pre>
-    <li><strong>macOS/Linux:</strong></li>
-    <pre><code>ifconfig
-</code></pre>
-  </ul>
+    <h4>🔍 Find Your IPv4 Address:</h4>
+    <ul>
+      <li><strong>Windows:</strong>
+        <pre>ipconfig</pre>
+      </li>
+      <li><strong>macOS/Linux:</strong>
+        <pre>ifconfig</pre>
+      </li>
+    </ul>
 
-  <h3>6️⃣ Run on Android</h3>
-  <pre><code>flutter run -d android
-</code></pre>
+    <h3>6️⃣ Run on Android</h3>
+    <pre>flutter run -d android</pre>
 
-  <h4>✅ Checklist:</h4>
-  <ul>
-    <li>Phone & PC connected to the same Wi-Fi network.</li>
-    <li>Backend API is running.</li>
-    <li>Correct IPv4 is set in <code>.env</code>.</li>
-  </ul>
-</div>
+    <h4>✅ Checklist:</h4>
+    <ul>
+      <li>Your phone and PC are on the same network.</li>
+      <li>Backend API is running.</li>
+      <li>Correct IPv4 is set in <code>.env</code>.</li>
+    </ul>
+  </div>
 
-<div class="section">
-  <h2>🔑 Default Login Credentials</h2>
-  <pre><code>ID (roll_no): 22113C04033
-Password: grey_
-</code></pre>
-</div>
+  <div class="section">
+    <h2>🔑 Default Login Credentials</h2>
+    <pre>ID (roll_no): 22113C04033
+Password: grey_</pre>
+  </div>
 
-<div class="section">
-  <h2>🔄 Adding or Updating Users</h2>
-  <p>Send a POST request to:</p>
-  <pre><code>http://&lt;your-ipv4&gt;:8000/api/auth/register
-</code></pre>
+  <div class="section">
+    <h2>🔄 Adding or Updating Users</h2>
+    <p>Send a POST request to:</p>
+    <pre>http://&lt;your-ipv4&gt;:8000/api/auth/register</pre>
 
-  <h3>Example Request Body (<code>application/json</code>):</h3>
-  <pre><code>{
+    <h3>Example JSON Body:</h3>
+    <pre>{
   "roll_no": "22113C04034",
   "name": "John Doe",
   "dp": "https://raw.githubusercontent.com/HELLFIRE-NILESH/class_hub/main/assets/dp/johndoe.jpg",
@@ -160,9 +151,8 @@ Password: grey_
   ],
   "back_log": [],
   "password": "new_password"
-}
-</code></pre>
-</div>
+}</pre>
+  </div>
 
 </body>
 </html>
