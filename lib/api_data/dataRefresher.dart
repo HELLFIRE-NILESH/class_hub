@@ -159,6 +159,9 @@ Future<void> refreshData(BuildContext context, String subjectCode, String dataTy
         case 'syllabus':
           await saveSyllabus(int.parse(subjectCode), dataList);
           break;
+        case 'paper':
+          await savePaper(int.parse(subjectCode), dataList);
+          break;
         default:
           throw Exception('Invalid data type');
       }

@@ -1,6 +1,11 @@
+
+import 'package:class_hub/api_data/userInfo.dart';
+import 'package:class_hub/widgets/pdfscrene.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+
+
+import '../../api_data/dataLoaders.dart';
 
 class PreviousPaper extends StatefulWidget {
   const PreviousPaper({super.key});
@@ -11,37 +16,29 @@ class PreviousPaper extends StatefulWidget {
 
 class _PreviousPaperState extends State<PreviousPaper> {
   TextEditingController searchController = TextEditingController();
-  List<Map<String, dynamic>> papers = [
-    {
-      "subjectCode": "101",
-      "subjectName": "Computer Fundamentals",
-      "papers": ["3443 - 2019", "4242 - 2020", "32423 - 2021"],
-    },
-    {
-      "subjectCode": "102",
-      "subjectName": "Data Structures",
-      "papers": ["2332 - 2023", "3232 - 2023", "5454 - 2022", "2343 - 2022"],
-    },
-    {
-      "subjectCode": "104",
-      "subjectName": "DBMS",
-      "papers": ["3443 - 2019", "4242 - 2020", "32423 - 2021"],
-    },
-    {
-      "subjectCode": "105",
-      "subjectName": "DSA",
-      "papers": ["2332 - 2023", "3232 - 2023", "5454 - 2022", "2343 - 2022"],
-    },
-  ];
+  List<Map<String, dynamic>> papers = [];
 
-  void _launchURL(String url) async {
-    Uri uri = Uri.parse(url);
+  @override
+  void initState() {
+    super.initState();
+    _loadPapers();
+  }
+
+  Future<void> _loadPapers() async {
     try {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
+      final user = await loadUserDataFile();
+      final List<int> codes = List<int>.from(user[0]['sub']);
+      final loadedPapers = await loadSubjectPapers(codes);
+
+      setState(() {
+        papers = loadedPapers;
+      });
     } catch (e) {
-      print('Could not launch $url: $e');
+      print('Error loading papers: $e');
     }
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -52,9 +49,8 @@ class _PreviousPaperState extends State<PreviousPaper> {
           IconButton(
             icon: const Icon(Icons.refresh),
             onPressed: () {
-              setState(() {
-                searchController.clear();
-              });
+              searchController.clear();
+              _loadPapers();
             },
           ),
         ],
@@ -69,7 +65,7 @@ class _PreviousPaperState extends State<PreviousPaper> {
               onChanged: (value) => setState(() {}),
               decoration: InputDecoration(
                 labelText: 'Search paper',
-                hintText: 'Search by subject code or subject name',
+                hintText: 'Search by subject code',
                 prefixIcon: const Icon(CupertinoIcons.search),
                 suffixIcon: searchController.text.isNotEmpty
                     ? IconButton(
@@ -93,12 +89,11 @@ class _PreviousPaperState extends State<PreviousPaper> {
                 final subject = papers[index];
                 String query = searchController.text.toLowerCase();
 
-                // Check if the search query matches either subject code or subject name
-                bool matches = subject["subjectCode"].toLowerCase().contains(query) ||
-                    subject["subjectName"].toLowerCase().contains(query);
+                bool matches =
+                subject["subjectCode"].toLowerCase().contains(query);
 
                 if (!matches) {
-                  return const SizedBox(); // Return an empty widget if no match
+                  return const SizedBox();
                 }
 
                 return Card(
@@ -122,7 +117,7 @@ class _PreviousPaperState extends State<PreviousPaper> {
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            "${subject["subjectCode"]} - ${subject["subjectName"]}",
+                            "${subject["subjectCode"]}",
                             style: const TextStyle(
                               fontSize: 22,
                               fontWeight: FontWeight.bold,
@@ -141,14 +136,21 @@ class _PreviousPaperState extends State<PreviousPaper> {
                           final paper = subject["papers"][paperIndex];
                           return ListTile(
                             title: Text(
-                              paper,
+                              paper["name"],
                               style: const TextStyle(fontSize: 18),
                             ),
                             trailing: ElevatedButton(
-                              onPressed: () => _launchURL(
-                                  "https://drive.google.com/file/d/1-Fq2-gLXddEj0eEu8cWoLoC8bgidScw1/view?usp=sharing"),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => PDFViewerScreen(url: paper["link"]),
+                                  ),
+                                );
+                              },
                               child: const Text("View"),
                             ),
+
                           );
                         },
                       ),

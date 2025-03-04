@@ -25,3 +25,5 @@ Future<void> saveDownloads(int sub, List<dynamic> data) => saveToFile(sub, data,
 Future<void> saveNotes(int sub, List<dynamic> data) => saveToFile(sub, data, 'notes.json');
 Future<void> saveSites(int sub, List<dynamic> data) => saveToFile(sub, data, 'sites.json');
 Future<void> saveSyllabus(int sub, List<dynamic> data) => saveToFile(sub, data, 'syllabus.json');
+Future<void> savePaper(int sub, List<dynamic> data) => saveToFile(sub, data, 'paper.json');
+
