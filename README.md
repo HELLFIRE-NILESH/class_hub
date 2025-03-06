@@ -92,7 +92,7 @@ npx nodemon index
 <p>🔧 Open the <strong>.env</strong> file and set your keys:</p>
 <pre>
 API_KEY=your-gemini-api-key
-URL=http://your-local-ipv4:8000
+URL=your-local-ipv4:8000
 </pre>
 <p>Replace <code>your-local-ipv4</code> with your actual IP (Example: <code>192.168.1.5</code>).</p>
 
